@@ -1,0 +1,5 @@
+wkbe_common.admin:
+  route_name: wkbe_common.admin
+  parent: system.admin_config
+  description: 'Configure Wunderkraut modules'
+  title: 'Wunderkraut'

@@ -1,0 +1,7 @@
+wkbe_common.admin:
+  path: 'admin/config/wunderkraut'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Wunderkraut module settings'
+  requirements:
+    _permission: 'administer elasticsearch'

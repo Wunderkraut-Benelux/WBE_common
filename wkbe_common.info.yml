@@ -1,0 +1,5 @@
+name: WK BE Common
+type: module
+description: Wunderkraut Belgium common code
+core: 8.x
+package: Wunderkraut

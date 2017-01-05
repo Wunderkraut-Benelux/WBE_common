@@ -1,0 +1,83 @@
+<?php
+
+/**
+ * @file
+ * Module file for wkbe common.
+ */
+
+/**
+ * Implements hook_theme_suggestions_HOOK().
+ */
+function wkbe_common_theme_suggestions_block(array $variables) {
+
+  $suggestions = [];
+
+  $navigation_blocks = [
+    'main_navigation_block',
+    'footer_navigation_block'
+  ];
+  if (in_array($variables['elements']['#base_plugin_id'], $navigation_blocks)) {
+    $suggestions[] = 'block__wkbe_navigation';
+    $suggestions[] = 'block__wkbe_' . $variables['elements']['#base_plugin_id'];
+  }
+
+  return $suggestions;
+}
+
+/**
+ * Implements hook_js_settings_alter().
+ */
+function wkbe_common_js_settings_alter(&$settings) {
+
+  // Drupal core ckeditor settings only allows element settings. Add widget settings.
+  if (isset($settings['editor'])) {
+
+    foreach ($settings['editor']['formats'] as &$format_settings) {
+
+      // Don't add settings if the plugin is not enabled.
+      if (empty($format_settings['editorSettings']['embed_enabled'])) {
+        continue;
+      }
+
+      $format_settings['editorSettings']['stylesSet'][] = [
+        'name' => 'Narrow media',
+        'type' => 'widget',
+        'widget' => 'embed',
+        'attributes' => [
+          'class' => 'narrow-media',
+        ],
+      ];
+
+      $format_settings['editorSettings']['stylesSet'][] = [
+        'name' => 'Left media',
+        'type' => 'widget',
+        'widget' => 'embed',
+        'attributes' => [
+          'class' => 'align-left',
+        ],
+      ];
+
+      $format_settings['editorSettings']['stylesSet'][] = [
+        'name' => 'Centered media',
+        'type' => 'widget',
+        'widget' => 'embed',
+        'attributes' => [
+          'class' => 'align-center',
+        ],
+      ];
+
+      $format_settings['editorSettings']['stylesSet'][] = [
+        'name' => 'Right media',
+        'type' => 'widget',
+        'widget' => 'embed',
+        'attributes' => [
+          'class' => 'align-right',
+        ],
+      ];
+
+    }
+
+  }
+
+
+}
