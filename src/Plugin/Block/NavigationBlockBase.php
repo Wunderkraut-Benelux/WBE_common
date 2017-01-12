@@ -82,10 +82,9 @@ class NavigationBlockBase extends BlockBase implements ContainerFactoryPluginInt
     $parameters = new MenuTreeParameters();
     $tree = $this->menuTree->load($this->menuName, $parameters);
 
-    $manipulators = array(
-      array('callable' => 'menu.menu_link_placeholder_tree_manipulators:checkAccess'),
-      array('callable' => 'menu.default_tree_manipulators:generateIndexAndSort'),
-    );
+    $manipulators = [
+      ['callable' => 'menu.default_tree_manipulators:generateIndexAndSort'],
+    ];
     $tree = $this->menuTree->transform($tree, $manipulators);
 
     return $this->menuTree->build($tree);
