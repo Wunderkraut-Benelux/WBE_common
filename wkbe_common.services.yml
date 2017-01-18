@@ -1,0 +1,6 @@
+services:
+  wkbe_common.route_subscriber:
+    class: Drupal\wkbe_common\Routing\RouteSubscriber
+    arguments: []
+    tags:
+     - { name: event_subscriber }
