@@ -96,6 +96,9 @@ class ConfigMarkup {
    * @param string $key
    *   The key of the config item to use.
    *
+   * @param string $format
+   *   The text format to use.
+   *
    * @return array
    */
   private function getConfigMarkup($name, $key, $format) {
