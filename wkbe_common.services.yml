@@ -4,3 +4,7 @@ services:
     arguments: []
     tags:
      - { name: event_subscriber }
+
+  wkbe_common.config_markup:
+    class: Drupal\wkbe_common\Utility\ConfigMarkup
+    arguments: ['@config.factory', '@token']
