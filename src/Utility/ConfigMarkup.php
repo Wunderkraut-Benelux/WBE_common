@@ -4,6 +4,7 @@ namespace Drupal\wkbe_common\Utility;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
+use Drupal\Core\Utility\Token;
 
 /**
  * Config markup utility service.
@@ -18,9 +19,11 @@ class ConfigMarkup extends MarkupBase {
   /**
    * ConfigMarkup constructor.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   * @param Token $token
    */
-  public function __construct(ConfigFactoryInterface $configFactory) {
+  public function __construct(ConfigFactoryInterface $configFactory, Token $token) {
     $this->configFactory = $configFactory;
+    parent::__construct($token);
   }
 
   /**
