@@ -40,7 +40,7 @@ class ConfigMarkup extends MarkupBase {
    *
    * @return array
    */
-  protected function getMarkup($name, $key, $format) {
+  public function getMarkup($name, $key, $format = 'full_html') {
     /** @var ImmutableConfig $config */
     $config = $this->configFactory->get($name);
     return $config->get($key) ?? ['value' => NULL, 'format' => $format];

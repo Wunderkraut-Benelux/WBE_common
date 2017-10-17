@@ -26,17 +26,10 @@ class StateMarkup extends MarkupBase {
   }
 
   /**
-   * Gets the state markup object.
-   *
-   * @param string $name
-   *   The name of the state object to use.
-
-   * @param string $format
-   *   Optional format. Defaults to full_html.
-   *
-   * @return array
+   * {@inheritdoc}
    */
-  protected function getMarkup($name, $format = 'full_html') {
+  protected function getMarkup($name, $key, $format = 'full_html') {
+    // Key is not needed for state.
     return $this->state->get($name) ?? ['value' => NULL, 'format' => $format];
   }
 
